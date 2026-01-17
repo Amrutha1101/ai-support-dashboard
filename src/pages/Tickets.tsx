@@ -27,21 +27,21 @@ export default function Tickets() {
       <h1 className="text-3xl font-bold">Tickets</h1>
 
       {/* SEARCH + FILTERS */}
-      <div className="bg-white p-4 rounded-xl shadow flex flex-col md:flex-row gap-4 items-center">
+      <div className="bg-white p-4 rounded-xl shadow flex flex-col md:flex-row gap-4 items-center md:items-stretch flex-wrap">
         {/* Search */}
         <input
           type="text"
           placeholder="Search by subject or customer"
           value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="border p-2 rounded w-full md:w-1/3"
+          onChange={(e) => setSearch(e.target.value)}
+          className="border p-2 rounded w-full md:w-1/3 flex-1"
         />
 
         {/* Status Filter */}
         <select
           value={statusFilter}
-          onChange={e => setStatusFilter(e.target.value)}
-          className="border p-2 rounded w-full md:w-1/4"
+          onChange={(e) => setStatusFilter(e.target.value)}
+          className="border p-2 rounded w-full md:w-1/4 flex-1"
         >
           <option>All</option>
           <option>Open</option>
@@ -52,8 +52,8 @@ export default function Tickets() {
         {/* Priority Filter */}
         <select
           value={priorityFilter}
-          onChange={e => setPriorityFilter(e.target.value)}
-          className="border p-2 rounded w-full md:w-1/4"
+          onChange={(e) => setPriorityFilter(e.target.value)}
+          className="border p-2 rounded w-full md:w-1/4 flex-1"
         >
           <option>All</option>
           <option>High</option>
@@ -68,15 +68,15 @@ export default function Tickets() {
             setStatusFilter("All");
             setPriorityFilter("All");
           }}
-          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300"
+          className="px-4 py-2 bg-gray-200 rounded hover:bg-gray-300 mt-2 md:mt-0"
         >
           Reset
         </button>
       </div>
 
       {/* TICKETS TABLE */}
-      <div className="bg-white rounded-xl shadow overflow-hidden">
-        <table className="w-full border-collapse">
+      <div className="bg-white rounded-xl shadow overflow-x-auto">
+        <table className="w-full min-w-[600px] border-collapse">
           <thead className="bg-gray-100 text-left">
             <tr>
               <th className="p-3">Subject</th>
@@ -88,7 +88,7 @@ export default function Tickets() {
           </thead>
 
           <tbody>
-            {filteredTickets.map(ticket => (
+            {filteredTickets.map((ticket) => (
               <tr
                 key={ticket.id}
                 className="border-t hover:bg-gray-50 cursor-pointer transition"
