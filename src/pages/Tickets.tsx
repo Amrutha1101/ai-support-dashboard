@@ -1,48 +1,9 @@
 import { useState } from "react";
 import { tickets } from "../data/mockTickets";
 
-type Ticket = {
-  id: number;
-  subject: string;
-  customer: string;
-  priority: "Low" | "Medium" | "High";
-  status: "Open" | "In Progress" | "Resolved";
-  assignedTo: string;
-};
-
-const mockTickets: Ticket[] = [
-  {
-    id: 1,
-    subject: "Billing issue",
-    customer: "John Doe",
-    priority: "High",
-    status: "Open",
-    assignedTo: "Sarah",
-  },
-  {
-    id: 2,
-    subject: "Unable to login",
-    customer: "Alice",
-    priority: "Medium",
-    status: "Resolved",
-    assignedTo: "Mike",
-  },
-  {
-    id: 3,
-    subject: "Password reset",
-    customer: "David",
-    priority: "Low",
-    status: "In Progress",
-    assignedTo: "Emma",
-  },
-];
-
 export default function Tickets() {
   const [search, setSearch] = useState("");
 
-  //   const filteredTickets = mockTickets.filter((ticket) =>
-  //     ticket.subject.toLowerCase().includes(search.toLowerCase()),
-  //   );
   const filteredTickets = tickets.filter((ticket) =>
     ticket.subject.toLowerCase().includes(search.toLowerCase()),
   );
