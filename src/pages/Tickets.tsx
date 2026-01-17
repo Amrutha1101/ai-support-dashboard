@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { tickets } from "../data/mockTickets";
 
 type Ticket = {
   id: number;
@@ -39,8 +40,11 @@ const mockTickets: Ticket[] = [
 export default function Tickets() {
   const [search, setSearch] = useState("");
 
-  const filteredTickets = mockTickets.filter((ticket) =>
-    ticket.subject.toLowerCase().includes(search.toLowerCase())
+  //   const filteredTickets = mockTickets.filter((ticket) =>
+  //     ticket.subject.toLowerCase().includes(search.toLowerCase()),
+  //   );
+  const filteredTickets = tickets.filter((ticket) =>
+    ticket.subject.toLowerCase().includes(search.toLowerCase()),
   );
 
   return (
@@ -81,7 +85,11 @@ export default function Tickets() {
 
           <tbody>
             {filteredTickets.map((ticket) => (
-              <tr key={ticket.id} className="border-b hover:bg-gray-50">
+              <tr
+                key={ticket.id}
+                className="border-b hover:bg-gray-50 cursor-pointer"
+                onClick={() => (window.location.href = `/tickets/${ticket.id}`)}
+              >
                 <td className="p-3">{ticket.id}</td>
                 <td className="p-3">{ticket.subject}</td>
                 <td className="p-3">{ticket.customer}</td>
@@ -91,8 +99,8 @@ export default function Tickets() {
                       ticket.priority === "High"
                         ? "bg-red-500"
                         : ticket.priority === "Medium"
-                        ? "bg-yellow-500"
-                        : "bg-green-500"
+                          ? "bg-yellow-500"
+                          : "bg-green-500"
                     }`}
                   >
                     {ticket.priority}

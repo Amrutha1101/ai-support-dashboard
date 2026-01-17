@@ -3,6 +3,7 @@ import Login from "./pages/Login";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import Tickets from "./pages/Tickets";
+import TicketDetail from "./pages/TicketDetail";
 
 export default function App() {
   return (
@@ -25,6 +26,15 @@ export default function App() {
         element={
           <Layout>
             <Tickets />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/tickets/:id"
+        element={
+          <Layout>
+            <TicketDetail />
           </Layout>
         }
       />
