@@ -1,4 +1,4 @@
-import Ticket  from "../data/mockTickets";
+import {Ticket}  from "../data/mockTickets";
 
 export function getTicketInsights(tickets: Ticket[]) {
   const open = tickets.filter(t => t.status === "Open").length;
