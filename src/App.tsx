@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Layout from "./components/layout/Layout";
 import Dashboard from "./pages/Dashboard";
+import Tickets from "./pages/Tickets";
 
 export default function App() {
   return (
@@ -15,6 +16,15 @@ export default function App() {
         element={
           <Layout>
             <Dashboard />
+          </Layout>
+        }
+      />
+
+      <Route
+        path="/tickets"
+        element={
+          <Layout>
+            <Tickets />
           </Layout>
         }
       />
